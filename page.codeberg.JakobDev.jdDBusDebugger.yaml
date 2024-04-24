@@ -28,8 +28,8 @@ modules:
       - python ./install-unix-datafiles.py --prefix=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://codeberg.org/JakobDev/jdDBusDebugger/archive/3.0.tar.gz
-        sha256: 9a9a53e204ba87efdd7bbe257a3dd0584dc7ac94a2030c1fae2f58b225e611cd
+        url: https://codeberg.org/JakobDev/jdDBusDebugger/archive/3.1.tar.gz
+        sha256: b4dabb6c3d828bb0b556f7358abbcf2ffda77888281dbff14ce20b6a70409ff4
         x-checker-data:
           type: json
           url: https://codeberg.org/api/v1/repos/JakobDev/jdDBusDebugger/releases/latest
