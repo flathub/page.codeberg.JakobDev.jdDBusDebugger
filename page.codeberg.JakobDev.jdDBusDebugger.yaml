@@ -11,15 +11,32 @@ build-options:
   env:
     - BASEAPP_REMOVE_PYWEBENGINE=1
 finish-args:
+  - --filesystem=xdg-run/at-spi:rw # Debug accessibility bus
+  - --filesystem=host-etc:ro # Get user names from uuid
+  - --filesystem=/tmp:rw # Share files with programs outside sandbox
   - --socket=fallback-x11
   - --socket=session-bus
   - --socket=system-bus
   - --socket=wayland
+  - --share=network
   - --device=dri
   - --share=ipc
 
 modules:
   - python3-modules.yaml
+
+  - name: socat
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: http://www.dest-unreach.org/socat/download/socat-1.8.0.0.tar.gz
+        sha256: 6010f4f311e5ebe0e63c77f78613d264253680006ac8979f52b0711a9a231e82
+        x-checker-data:
+          type: anitya
+          project-id: 4848
+          url-template: http://www.dest-unreach.org/socat/download/socat-$version.tar.gz
+    cleanup:
+      - /share
 
   - name: jdDBusDebugger
     buildsystem: simple
@@ -28,8 +45,8 @@ modules:
       - python ./install-unix-datafiles.py --prefix=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://codeberg.org/JakobDev/jdDBusDebugger/archive/3.1.tar.gz
-        sha256: b4dabb6c3d828bb0b556f7358abbcf2ffda77888281dbff14ce20b6a70409ff4
+        url: https://codeberg.org/JakobDev/jdDBusDebugger/archive/4.0.tar.gz
+        sha256: cdf4dcee91af6d05ada8596a05ede6c856e40148bfe27882c2f6d862089226f5
         x-checker-data:
           type: json
           url: https://codeberg.org/api/v1/repos/JakobDev/jdDBusDebugger/releases/latest
