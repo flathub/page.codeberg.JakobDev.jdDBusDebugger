@@ -9,8 +9,8 @@ modules:
         --prefix=${FLATPAK_DEST} "lxml" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/ce/08/1217ca4043f55c3c92993b283a7dbfa456a2058d8b57bbb416cc96b6efff/lxml-6.0.4.tar.gz
-        sha256: 4137516be2a90775f99d8ef80ec0283f8d78b5d8bd4630ff20163b72e7e9abf2
+        url: https://files.pythonhosted.org/packages/05/3b/aab6728cae887456f409b4d75e8a01856e4f04bd510de38052a47768b680/lxml-6.1.1.tar.gz
+        sha256: ba96ae44888e0185281e937633a743ea90d5a196c6000f82565ebb0580012d40
         x-checker-data:
           name: lxml
           type: pypi
